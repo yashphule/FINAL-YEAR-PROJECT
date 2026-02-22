@@ -1,0 +1,181 @@
+.top-bar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.top-bar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-info {
+  display: flex;
+  gap: 30px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  font-size: 16px;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  color: white;
+  text-decoration: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: white;
+  color: #667eea;
+}
+
+.navbar {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.logo-icon {
+  font-size: 32px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #667eea;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #667eea;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-login {
+  padding: 10px 25px;
+  border: 2px solid #4ade80;
+  background: transparent;
+  color: #4ade80;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  background: #4ade80;
+  color: white;
+}
+
+.btn-signup {
+  padding: 10px 25px;
+  border: none;
+  background: #667eea;
+  color: white;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-signup:hover {
+  background: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+@media (max-width: 768px) {
+  .top-bar-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .contact-info {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .navbar-container {
+    flex-wrap: wrap;
+  }
+  
+  .nav-menu {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+}
