@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -23,24 +23,32 @@ jobs:
         with:
           node-version: '18'
       
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: hospital-appointment-frontend/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('hospital-appointment-frontend/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      
       - name: Install dependencies
         working-directory: ./hospital-appointment-frontend
-        run: npm install --legacy-peer-deps
+        run: |
+          npm install --legacy-peer-deps
+          npm install --save-dev gh-pages
       
       - name: Build project
         working-directory: ./hospital-appointment-frontend
         run: npm run build
         env:
           CI: false
+          GENERATE_SOURCEMAP: false
       
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./hospital-appointment-frontend/build
-      
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Deploy to gh-pages branch
+        working-directory: ./hospital-appointment-frontend
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          npm run deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
